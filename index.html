@@ -1,11 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>netiTheerpuEpapaer</title>
+    <meta charset="utf-8" />
+    <title>Neti Theerpu Epaper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@6.2.0/swiper-bundle.css" />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Welcome to github</h1>
+
+<body style="background-color: aqua;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img src="logo.png" alt="" width="150"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#change-date" data-toggle="modal"
+                            data-target="#changeDateModal">Change Date</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#change-edition">Change Edition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#crop-share">Crop and Share</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#download-edition" data-toggle="modal"
+                            data-target="#downloadEditionModal">Download Edition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#download-page">Download Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-us">Contact Us</a>
+                    </li>
+                    <!-- ... (other navigation items) ... -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Modal for Download Edition -->
+    <div class="modal fade" id="downloadEditionModal" tabindex="-1" role="dialog"
+        aria-labelledby="downloadEditionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="downloadEditionModalLabel">Download Edition</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add content for downloading the edition here -->
+                    <p>You can download the edition by clicking the link below:</p>
+                    <a href="1.pdf" download="netitheerpu.pdf" id="downloadLink">Download Edition</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Change Date -->
+    <div class="modal fade" id="changeDateModal" tabindex="-1" role="dialog" aria-labelledby="changeDateModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeDateModalLabel">Change Date</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="newDate">Select a New Date:</label>
+                    <input type="date" id="newDate" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="updateDateBtn" class="btn btn-primary">Update Date</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Modal for Image Crop and Share -->
+    <div class="modal fade" id="imageCropModal" tabindex="-1" role="dialog" aria-labelledby="imageCropModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageCropModalLabel">Crop and Share Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Include the image to be cropped here -->
+                    <img src="page1.jpg" id="imageToCrop" alt="Image to Crop">
+                    <div>
+                        <button id="cropImageBtn" class="btn btn-primary mt-2">Crop Image</button>
+                        <button id="shareImageBtn" class="btn btn-success mt-2">Share Image</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="page1.jpg" />
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="page2.jpg" />
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="page3.jpg" />
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="page4.jpg" />
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <!--FOTTER-->
+    <!-- <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-col">
+                            <h4>Neti Theerpu Epaper</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const prefix = "2023-09-10"; // The common prefix to add to image sources
+            const images = document.querySelectorAll(".swiper-container img");
+        
+            images.forEach(function (img) {
+                const currentSrc = img.getAttribute("src");
+                img.setAttribute("src", prefix + "/" + currentSrc);
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const prefix =  "2023-09-10"; // The common prefix to add to the href attribute
+            const downloadLink = document.getElementById("downloadLink");
+        
+            // Get the current href attribute value
+            const currentHref = downloadLink.getAttribute("href");
+        
+            // Update the href attribute with the prefix added
+            downloadLink.setAttribute("href", prefix + "/" + currentHref);
+        });
+        
+        
+    </script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@6.2.0/swiper-bundle.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".swiper-container", {
+            zoom: {
+                maxRatio: 8
+            },
+            pagination: {
+                el: ".swiper-pagination"
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            }
+        });
+        var originalElem = document.getElementById("test");
+        var elem = document.createElement("img");
+        elem.onload = () => {
+            originalElem.parentElement
+                .querySelector(".swiper-zoom-container")
+                .appendChild(elem);
+            originalElem.parentElement
+                .querySelector(".swiper-zoom-container")
+                .classList.add("zoomed");
+            originalElem.parentElement
+                .querySelector(".swiper-zoom-container")
+                .appendChild(originalElem);
+        };
+
+    </script>
+    <!-- Link to Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // JavaScript logic for handling date change (if needed)
+        document.addEventListener("DOMContentLoaded", function () {
+            const newDateInput = document.getElementById("newDate");
+            const updateDateBtn = document.getElementById("updateDateBtn");
+
+            updateDateBtn.addEventListener("click", function () {
+                const selectedDate = newDateInput.value;
+                // You can now use the selectedDate value as needed.
+                // For example, you can update content or perform other actions.
+                alert("Selected Date: " + selectedDate);
+            });
+        });
+    </script>
 </body>
+
 </html>
