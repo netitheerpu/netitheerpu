@@ -20,6 +20,14 @@
         }
     </style>
     <meta name="google-site-verification" content="cJqkHl8eMLvQIOd0CRXCLnsk7LvWNTJTSAd5jRzXbrY" />
+    <!-- Define image metadata for sharing -->
+    <meta property="og:title" content="Neti Theerpu Epaper">
+    <meta property="og:description" content="Page 1">
+    <meta property="og:image" content="Page1.jpg">
+    <meta property="og:image:width" content="1200"> <!-- Set the width of your image in pixels -->
+    <meta property="og:image:height" content="630"> <!-- Set the height of your image in pixels -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://epapernetitheerpu.vercel.app">
 </head>
 
 <body style="background-color: aqua;">
@@ -210,6 +218,11 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
 
+        const dynamicImageURL = 'https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/' +  formattedDate;
+
+        // Set the og:image content dynamically
+        const ogImageMeta = document.querySelector('meta[property="og:image"]');
+        ogImageMeta.setAttribute('content', dynamicImageURL);
         // Get the current date
         const currentDate = new Date();
 
