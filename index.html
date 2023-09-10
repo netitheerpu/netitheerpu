@@ -72,7 +72,7 @@
                 <div class="modal-body">
                     <!-- Add content for downloading the edition here -->
                     <p>You can download the edition by clicking the link below:</p>
-                    <a href="1.pdf" download="netitheerpu.pdf" id="downloadLink" style="color: chartreuse;>Download Edition</a>
+                    <a href="1.pdf" download="netitheerpu.pdf" id="downloadLink" style="color: chartreuse;">Download Edition</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -137,22 +137,22 @@
 
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="Page1.jpg" />
+                    <img src="/Page1.jpg" />
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="Page2.jpg" />
+                    <img src="/Page2.jpg" />
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="Page3.jpg" />
+                    <img src="/Page3.jpg" />
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="Page4.jpg" />
+                    <img src="/Page4.jpg" />
                 </div>
             </div>
         </div>
@@ -222,7 +222,7 @@
         const formattedDate = `${year}-${month}-${day}`;
 
         document.addEventListener("DOMContentLoaded", function () {
-            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + formattedDate; // The common prefix to add to image sources
+            const prefix = formattedDate; // The common prefix to add to image sources
             const images = document.querySelectorAll(".swiper-container img");
 
             images.forEach(function (img) {
@@ -231,7 +231,7 @@
             });
         });
         document.addEventListener("DOMContentLoaded", function () {
-            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + formattedDate; // The common prefix to add to the href attribute
+            const prefix =  formattedDate; // The common prefix to add to the href attribute
             const downloadLink = document.getElementById("downloadLink");
 
             // Get the current href attribute value

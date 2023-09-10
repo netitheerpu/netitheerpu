@@ -234,16 +234,16 @@
                 img.setAttribute("src", prefix + "/" + currentSrc);
             });
         });
-        // document.addEventListener("DOMContentLoaded", function () {
-        //     const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + (date != "" ? date : formattedDate); // The common prefix to add to the href attribute
-        //     const downloadLink = document.getElementById("downloadLink");
+        document.addEventListener("DOMContentLoaded", function () {
+            const prefix = (date != "" ? date : formattedDate); // The common prefix to add to the href attribute
+            const downloadLink = document.getElementById("downloadLink");
 
-        //     // Get the current href attribute value
-        //     const currentHref = downloadLink.getAttribute("href");
+            // Get the current href attribute value
+            const currentHref = downloadLink.getAttribute("href");
 
-        //     // Update the href attribute with the prefix added
-        //     downloadLink.setAttribute("href", prefix + "/" + currentHref);
-        // });
+            // Update the href attribute with the prefix added
+            downloadLink.setAttribute("href", prefix + "/" + currentHref);
+        });
 
 
     </script>
