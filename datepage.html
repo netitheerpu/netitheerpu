@@ -4,20 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <title>Neti Theerpu Epaper</title>
-    <meta name="google-site-verification" content="cJqkHl8eMLvQIOd0CRXCLnsk7LvWNTJTSAd5jRzXbrY" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@6.2.0/swiper-bundle.css" />
     <link rel="stylesheet" href="./src/styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Define image metadata for sharing -->
-    <meta property="og:title" content="Neti Theerpu Epaper">
-    <meta property="og:description" content="Page 1">
-    <meta property="og:image" content="Page1.jpg">
-    <meta property="og:image:width" content="1200"> <!-- Set the width of your image in pixels -->
-    <meta property="og:image:height" content="630"> <!-- Set the height of your image in pixels -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://epapernetitheerpu.vercel.app">
     <style>
         hr {
             border: .8px solid white;
@@ -217,12 +208,6 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-
-        const dynamicImageURL = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + (date != "" ? date : formattedDate);
-
-        // Set the og:image content dynamically
-        const ogImageMeta = document.querySelector('meta[property="og:image"]');
-        ogImageMeta.setAttribute('content', dynamicImageURL);
         // Extract the data from the URL
         const urlParams = new URLSearchParams(window.location.search);
         const date = urlParams.get('date');
