@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="./src/styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-         
         hr {
             border: .8px solid white;
         }
@@ -41,8 +40,8 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#crop-share">Crop and Share</a>
-                    </li>
-                    <li class="nav-item"> -->
+                    </li> -->
+                    <li class="nav-item">
                         <a class="nav-link" href="#download-edition" data-toggle="modal"
                             data-target="#downloadEditionModal">Download Edition</a>
                     </li>
@@ -205,7 +204,12 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
+        // Extract the data from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const date = urlParams.get('date');
 
+        // Display the received data on the page
+        
         // Get the current date
         const currentDate = new Date();
 
@@ -218,7 +222,7 @@
         const formattedDate = `${year}-${month}-${day}`;
 
         document.addEventListener("DOMContentLoaded", function () {
-            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + formattedDate; // The common prefix to add to image sources
+            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" +(date!=""?date:formattedDate); // The common prefix to add to image sources
             const images = document.querySelectorAll(".swiper-container img");
 
             images.forEach(function (img) {
@@ -227,7 +231,7 @@
             });
         });
         document.addEventListener("DOMContentLoaded", function () {
-            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + formattedDate; // The common prefix to add to the href attribute
+            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + (date!=""?date:formattedDate); // The common prefix to add to the href attribute
             const downloadLink = document.getElementById("downloadLink");
 
             // Get the current href attribute value
@@ -287,6 +291,8 @@
                 const selectedDate = newDateInput.value;
                 // You can now use the selectedDate value as needed.
                 // For example, you can update content or perform other actions.
+                
+                
                 const url = `datepage.html?date=${encodeURIComponent(selectedDate)}`;
                 window.location.href = url;
             });
