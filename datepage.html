@@ -169,8 +169,7 @@
                     <div class="col-md-4">
                         <div class="footer-col">
                             <h5>Neti Theerpu Epaper</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in turpis id nulla
-                                    feugiat aliquet.</p>
+                                <p></p>
                         </div>
                         <hr>
                     </div>
@@ -189,10 +188,15 @@
                         <div class="footer-col">
                             <h5>Contact Information</h4>
                                 <address>
-                                    <p>123 Main Street</p>
-                                    <p>New York, NY 10001</p>
-                                    <p>Email: contact@example.com</p>
-                                    <p>Phone: +1 (123) 456-7890</p>
+                                    <p>printed, published and owned by</p>
+                                    <p> BS GIRI.</p>
+                                    <p>Editor: T.S.KRISHNA. </p>
+                                    18-8-224/5/265, raja narasimha colony, said-
+                                    abad, hyderabad. printed at KARSHAK PRINTER, O.U.Road, Nallakunta, Vidyanagar,
+                                    Hyderabad.
+                                    </p>
+                                    <p>RNI NO. 22296/2007</p>
+
                                 </address>
                         </div>
                     </div>
@@ -209,7 +213,7 @@
         const date = urlParams.get('date');
 
         // Display the received data on the page
-        
+
         // Get the current date
         const currentDate = new Date();
 
@@ -222,7 +226,7 @@
         const formattedDate = `${year}-${month}-${day}`;
 
         document.addEventListener("DOMContentLoaded", function () {
-            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" +(date!=""?date:formattedDate); // The common prefix to add to image sources
+            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + (date != "" ? date : formattedDate); // The common prefix to add to image sources
             const images = document.querySelectorAll(".swiper-container img");
 
             images.forEach(function (img) {
@@ -231,7 +235,7 @@
             });
         });
         document.addEventListener("DOMContentLoaded", function () {
-            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + (date!=""?date:formattedDate); // The common prefix to add to the href attribute
+            const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + (date != "" ? date : formattedDate); // The common prefix to add to the href attribute
             const downloadLink = document.getElementById("downloadLink");
 
             // Get the current href attribute value
@@ -291,8 +295,8 @@
                 const selectedDate = newDateInput.value;
                 // You can now use the selectedDate value as needed.
                 // For example, you can update content or perform other actions.
-                
-                
+
+
                 const url = `datepage.html?date=${encodeURIComponent(selectedDate)}`;
                 window.location.href = url;
             });
