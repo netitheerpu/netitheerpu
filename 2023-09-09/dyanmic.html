@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Neti Theerpu Epaper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@6.2.0/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add your custom styles here */
+    </style>
+</head>
+
+<body style="background-color: aqua;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img src="logo.png" alt="" width="150"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#change-date" data-toggle="modal" data-target="#changeDateModal">Change Date</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#change-edition">Change Edition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#crop-share" data-toggle="modal" data-target="#imageCropModal">Crop and Share</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#download-edition">Download Edition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#download-page">Download Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-us">Contact Us</a>
+                    </li>
+                    <!-- ... (other navigation items) ... -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Modal for Change Date -->
+    <div class="modal fade" id="changeDateModal" tabindex="-1" role="dialog" aria-labelledby="changeDateModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeDateModalLabel">Change Date</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="newDate">Select a New Date:</label>
+                    <input type="date" id="newDate" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="updateDateBtn" class="btn btn-primary">Update Date</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Image Crop and Share -->
+    <div class="modal fade" id="imageCropModal" tabindex="-1" role="dialog" aria-labelledby="imageCropModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageCropModalLabel">Crop and Share Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Include the image to be cropped here -->
+                    <img src="image-to-crop.jpg" id="imageToCrop" alt="Image to Crop">
+                    <div>
+                        <button id="cropImageBtn" class="btn btn-primary mt-2">Crop Image</button>
+                        <button id="shareImageBtn" class="btn btn-success mt-2">Share Image</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="swiper-wrapper">
+            <!-- JavaScript will generate swiper-slide elements here -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@6.2.0/swiper-bundle.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".swiper-container", {
+            zoom: {
+                maxRatio: 8
+            },
+            pagination: {
+                el: ".swiper-pagination"
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            }
+        });
+
+        // JavaScript logic for handling image cropping and sharing (using a placeholder function)
+        document.addEventListener("DOMContentLoaded", function () {
+            const cropImageBtn = document.getElementById("cropImageBtn");
+            const shareImageBtn = document.getElementById("shareImageBtn");
+            const imageToCrop = document.getElementById("imageToCrop");
+
+            cropImageBtn.addEventListener("click", function () {
+                // Add logic here to trigger image cropping (using Cropper.js or other library)
+                alert("Image cropped!");
+            });
+
+            shareImageBtn.addEventListener("click", function () {
+                // Add logic here to handle image sharing
+                alert("Image shared!");
+            });
+
+            // Define an array of image sources
+            const imageSources = [
+                "https://cdn.pixabay.com/photo/2023/08/18/15/02/dog-8198719_1280.jpg",
+                "https://cdn.pixabay.com/photo/2023/08/28/23/17/superb-fairywren-8220199_1280.jpg",
+                "page3.jpg",
+                "page4.jpg"
+                // Add more image sources as needed
+            ];
+
+            // Get the swiper-wrapper element
+            const swiperWrapper = document.getElementById("swiper-wrapper");
+
+            // Loop through the image sources and create swiper-slide elements dynamically
+            imageSources.forEach((imageSource) => {
+                const swiperSlide = document.createElement("div");
+                swiperSlide.classList.add("swiper-slide");
+
+                const swiperZoomContainer = document.createElement("div");
+                swiperZoomContainer.classList.add("swiper-zoom-container");
+
+                const img = document.createElement("img");
+                img.src = imageSource;
+
+                swiperZoomContainer.appendChild(img);
+                swiperSlide.appendChild(swiperZoomContainer);
+                swiperWrapper.appendChild(swiperSlide);
+            });
+        });
+    </script>
+
+    <!-- Link to Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
