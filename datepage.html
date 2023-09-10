@@ -141,7 +141,7 @@
             </div>
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="2023-08-23/Page2.jpg" />
+                    <img src="Page2.jpg" />
                 </div>
             </div>
             <div class="swiper-slide">
@@ -225,15 +225,15 @@
         // Format the date as "yyyy-MM-dd"
         const formattedDate = `${year}-${month}-${day}`;
 
-        // document.addEventListener("DOMContentLoaded", function () {
-        //     const prefix =  (date != "" ? date : formattedDate); // The common prefix to add to image sources
-        //     const images = document.querySelectorAll(".swiper-container img");
+        document.addEventListener("DOMContentLoaded", function () {
+            const prefix =  (date != "" ? date : formattedDate); // The common prefix to add to image sources
+            const images = document.querySelectorAll(".swiper-container img");
 
-        //     images.forEach(function (img) {
-        //         const currentSrc = img.getAttribute("src");
-        //         img.setAttribute("src", prefix + "/" + currentSrc);
-        //     });
-        // });
+            images.forEach(function (img) {
+                const currentSrc = img.getAttribute("src");
+                img.setAttribute("src", prefix + "/" + currentSrc);
+            });
+        });
         // document.addEventListener("DOMContentLoaded", function () {
         //     const prefix = "https://raw.githubusercontent.com/netitheerpu/netitheerpu/main/" + (date != "" ? date : formattedDate); // The common prefix to add to the href attribute
         //     const downloadLink = document.getElementById("downloadLink");
