@@ -4,10 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <title>Neti Theerpu Epaper</title>
+    <meta title="" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@6.2.0/swiper-bundle.css" />
-    <link rel="stylesheet" href="./src/styles.css" />
+    <!-- <link rel="stylesheet" href="./src/styles.css" /> -->
+    <link rel="stylesheet" href="cropper/cropper.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         hr {
@@ -105,7 +107,7 @@
     </div>
     </div>
     <!-- Modal for Image Crop and Share -->
-    <div class="modal fade" id="imageCropModal" tabindex="-1" role="dialog" aria-labelledby="imageCropModalLabel"
+    <!-- <div class="modal fade" id="imageCropModal" tabindex="-1" role="dialog" aria-labelledby="imageCropModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -116,7 +118,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Include the image to be cropped here -->
+                    Include the image to be cropped here 
                     <img src="page1.jpg" id="imageToCrop" alt="Image to Crop">
                     <div>
                         <button id="cropImageBtn" class="btn btn-primary mt-2">Crop Image</button>
@@ -128,7 +130,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- Swiper -->
@@ -137,22 +139,22 @@
 
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="/Page1.jpg" />
+                    <img src="Page1.jpg" id="1"/>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="/Page2.jpg" />
+                    <img src="Page2.jpg" id="2" />
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="/Page3.jpg" />
+                    <img src="Page3.jpg" id="3"/>
                 </div>
             </div>
             <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                    <img src="/Page4.jpg" />
+                    <img src="Page4.jpg" id="4"/>
                 </div>
             </div>
         </div>
@@ -162,6 +164,36 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
+    <button onclick="crop()">crop</button>
+    <button onclick="doCrop()">do crop</button>
+    <button onclick="cancel()">cancel</button>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <img src="" id="output" alt="" width="100%">
+            <a href=""id="output-d" download="netitheerpu"><button class="btn btn-primary">Download</button></a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
     <!--FOTTER-->
     <footer style="font-size: smaller; color: white; background-color: #3c3d41; padding-top: 20px;">
         <div class="footer">
@@ -205,7 +237,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="cropper/cropper.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
@@ -295,6 +327,45 @@
                 window.location.href = url;
             });
         });
+    </script>
+    <script>
+        let cropper;
+        function crop(){
+            let image = document.querySelector('.swiper-slide-active img').getAttribute('id');
+            console.log(image);
+            swiper.allowTouchMove = false;
+            cropper = new Cropper(document.getElementById(image), {
+                aspectRatio: 0, // Set your desired aspect ratio here
+          minCropBoxWidth: 20,
+          minContainerWidth: 0,
+          zoomable: false,
+          movable: false,
+          autoCropArea: 0.3,
+          scalable: false,
+          background: false,
+            });
+        }
+        function cancel(){
+            cropper.destroy();
+            
+            swiper.allowTouchMove = true;
+
+        }
+        function doCrop() {
+            if (cropper) {
+              const canvasData = cropper.getCroppedCanvas().toDataURL("image/jpg");
+              console.log(canvasData);
+              document.getElementById("output").src = '';
+              document.getElementById("output").src = canvasData;
+              document.getElementById("output-d").href = '';
+              document.getElementById("output-d").href = canvasData;
+              document.getElementById("output-d").download = '';
+              document.getElementById("output-d").download = 'netitheerpu_'+formattedDate+'_'+new Date().getTime();
+            }
+            cropper.destroy();
+            cropper=null;
+            swiper.allowTouchMove = true;
+          }
     </script>
 </body>
 
